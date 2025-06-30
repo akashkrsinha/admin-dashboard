@@ -1,1 +1,27 @@
-/* You can add global styles to this file, and also import other style files */
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.w-17{
+    width: 17%;
+}
+
+.w-83{
+    width: 83%;
+}
+
+.tborder{
+    border: 2px solid red;;
+}
+
+.pageNotFound{
+    color: red;
+}
+
+.pointer{
+    cursor: pointer;
+}
