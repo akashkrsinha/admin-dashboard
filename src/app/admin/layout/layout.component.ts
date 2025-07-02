@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./layout.component.scss']
 })
 export class LayoutComponent {
-
+  selectedMenu: string = 'Dashboard';
   menus: any = [
     {
       label: 'Dashboard',
@@ -19,5 +19,9 @@ export class LayoutComponent {
       faIcon: 'fa-user-circle'
     }
   ];
+
+  menuClicked(menu: string) {
+    this.selectedMenu = menu;
+  }
 
 }

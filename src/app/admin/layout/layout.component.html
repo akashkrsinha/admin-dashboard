@@ -1,16 +1,16 @@
 <div class="h-100 d-flex">
     <div class="left-side w-17 border-end h-100 d-flex flex-column">
-        <div class="text-center p-3 fs-5 heading mb-3">
-            <i class="fa fa-id-card-o" aria-hidden="true"></i> Admin Dashboard
+        <div class="text-center p-3 fs-5 header">
+            <i class="fa fa-id-card-o" aria-hidden="true"></i> Admin Dashboard UI
         </div>
-        <div *ngFor="let menu of menus;" [routerLink]="menu?.link" class="menu border px-4 py-3 pointer">
+        <div *ngFor="let menu of menus;" [routerLink]="menu?.link" (click)="menuClicked(menu?.label)" class="menu border px-4 py-3 pointer" [ngClass]="{'selectedMenu': menu?.label == selectedMenu}">
            <i class='fa {{menu?.faIcon}} pe-2' aria-hidden="true"></i>  {{menu?.label}}
         </div>
-        <div class="heading px-4 py-3 mt-auto">
-            <i class="fa fa-user-secret" aria-hidden="true"></i> Welcome! Guest
+        <div class="user-info px-4 py-3 mt-auto">
+            <i class="fa fa-user-secret" aria-hidden="true"></i> Welcome! Admin
         </div>
     </div>
-    <div class="right-side w-83 overflow-auto p-2">
+    <div class="right-side w-83 overflow-auto p-4">
         <router-outlet></router-outlet>
     </div>
 </div>

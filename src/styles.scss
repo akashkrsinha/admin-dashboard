@@ -25,3 +25,25 @@ html, body{
 .pointer{
     cursor: pointer;
 }
+
+table{
+    width: 100%;
+}
+
+thead th{
+    border-bottom: 1px solid grey;
+}
+
+td, th{
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 10px;
+}
+
+th{
+    border-bottom: 1px solid grey;
+}
+
+tr:nth-child(even){
+    background-color: #dddddd;
+}

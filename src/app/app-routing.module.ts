@@ -5,7 +5,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'admin',
+    redirectTo: 'admin/dashboard',
     pathMatch: 'full'
   },
   {

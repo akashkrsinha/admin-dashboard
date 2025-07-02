@@ -1,11 +1,72 @@
-<div class="">
-    <div class="d-flex">
-        <div *ngFor="let card of cardList;" class="card d-flex w-25 h-25">
-            <div class="left-side-card"></div>
-            <div class="right-side-card border-right">
-                <div>Total Count: {{card?.count}}</div>
-                <div></div>
-                <div></div>
+<div>
+    <div class="row g-3">
+        <div *ngFor="let card of cardList;" class="col-3">
+            <div class="dashboard-card d-flex p-2 card-height">
+                <div>
+                    <circle-progress [percent]="card?.count" [radius]="60" [outerStrokeWidth]="10"
+                        [innerStrokeWidth]="5" [outerStrokeColor]="'#f00058'" [innerStrokeColor]="'#e7e8ea'"
+                        [animation]="true" [showSubtitle]="false" [animationDuration]="400">
+                    </circle-progress>
+                </div>
+                <div class="border-right mt-2 d-flex flex-column justify-content-between">
+                    <div class="fw-bold">{{card?.label}}</div>
+                    <div class="mt-2 fw-bold fs-2 mb-5">{{card?.count}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-5 row">
+        <div class="col-6">
+            <div class="dashboard-card p-2">
+                <canvas baseChart [data]="barChartData" [type]="barChartType" [options]="barChartOptions">
+                </canvas>
+            </div>
+        </div>
+
+        <div class="col-6 dashboard-card p-2">
+            <canvas baseChart [data]="lineChartData" [type]="lineChartType" [options]="lineChartOptions">
+            </canvas>
+        </div>
+    </div>
+
+    <div class="row mt-5">
+        <div class="col-6">
+            <div class="dashboard-card p-2 container-height">
+                <div class="text-center fw-bold mb-2 fs-5">Recently Added Users</div>
+
+                <div class="table-container w-100">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sl. No.</th>
+                                <th>User Name</th>
+                                <th>Email</th>
+                                <th>Mobile</th>
+                                <th>Status</th>
+                                <th>Role</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let data of latestUserData; let idx = index;">
+                                <td>{{idx + 1}}</td>
+                                <td>{{data?.userName}}</td>
+                                <td>{{data?.email}}</td>
+                                <td>{{data?.mobile}}</td>
+                                <td>{{data?.status}}</td>
+                                <td>{{data?.role}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-6">
+            <div class="dashboard-card p-2 d-flex justify-content-center container-height">
+                <canvas baseChart [data]="pieChartData" [type]="pieChartType" [options]="pieChartOptions">
+                </canvas>
             </div>
         </div>
     </div>
