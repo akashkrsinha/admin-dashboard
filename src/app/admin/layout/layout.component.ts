@@ -14,7 +14,7 @@ export class LayoutComponent {
       faIcon: 'fa-th',
     },
     {
-      label: 'Users Table',
+      label: 'Users',
       link: 'users',
       faIcon: 'fa-user-circle'
     }
