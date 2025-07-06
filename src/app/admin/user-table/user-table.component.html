@@ -1,31 +1,50 @@
 <div>
     <div class="d-flex justify-content-between">
         <div class="fs-3 fw-semibold">Users Details</div>
-        <button class="primary-button" title="Add User">Add User</button>
+        <button (click)="addUserClicked()" class="primary-button" title="Add User">Add User</button>
     </div>
 
-    <div class="table-container mt-3">
+    <div *ngIf="totalNumberOfData; else noUserDataFound;" class="table-container mt-3">
         <table>
             <thead>
                 <tr>
                     <th>Sl. No.</th>
-                    <th>User Name</th>
+                    <th>Name</th>
                     <th>Email</th>
                     <th>Mobile</th>
                     <th>Status</th>
                     <th>Role</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <tr *ngFor="let data of userData; let idx = index;">
-                    <td class="px-4">{{idx + 1}}</td>
-                    <td>{{data?.userName}}</td>
+                    <td class="px-4">{{(currentPageIndex * totalDataInAPage) + (idx + 1)}}</td>
+                    <td>{{data?.name}}</td>
                     <td>{{data?.email}}</td>
                     <td>{{data?.mobile}}</td>
-                    <td>{{data?.status}}</td>
+                    <td [ngClass]="data?.status ? 'color-green' : 'color-red'" class="fw-semibold">{{data?.status ==
+                        true ? 'Active' : 'Inactive'}}</td>
                     <td>{{data?.role}}</td>
+                    <td class="ps-2"><i (click)="editUser(data?.email)" class="fa fa-pencil pointer" aria-hidden="true"
+                            title="Edit"></i> <i (click)="deleteUSer(data?.email)" class="fa fa-trash-o ms-4 pointer"
+                            aria-hidden="true" title="Delete"></i></td>
                 </tr>
             </tbody>
         </table>
     </div>
+
+    <div *ngIf="totalNumberOfData > 10" class="d-flex justify-content-end mt-2 fs-5">
+        <p-paginator [rows]="totalDataInAPage" [totalRecords]="totalNumberOfData" [rowsPerPageOptions]="[10, 20, 50, 100]"
+            (onPageChange)="paginationChange($event)">
+        </p-paginator>
+    </div>
+
+    <ng-template #noUserDataFound>
+        <div class="text-center text-muted mt-100">
+            <i class="fa fa-user-times fs-1" aria-hidden="true"></i>
+            <h2>No User Found.</h2>
+            <h5>You can add a user by clicking the <strong>'Add User'</strong>button placed above.</h5>
+        </div>
+    </ng-template>
 </div>

@@ -20,8 +20,15 @@ export class LayoutComponent {
     }
   ];
 
+  constructor(){
+    if(sessionStorage.getItem('selectedMenu')){
+      this.selectedMenu = sessionStorage.getItem('selectedMenu')!;
+    }
+  }
+
   menuClicked(menu: string) {
     this.selectedMenu = menu;
+    sessionStorage.setItem('selectedMenu', this.selectedMenu);
   }
 
 }

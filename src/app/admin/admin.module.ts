@@ -7,6 +7,8 @@ import { LayoutComponent } from './layout/layout.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { NgChartsModule } from 'ng2-charts';
 import { UserFormComponent } from './user-form/user-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { PaginatorModule } from 'primeng/paginator';
 
 @NgModule({
   declarations: [
@@ -27,7 +29,9 @@ import { UserFormComponent } from './user-form/user-form.component';
       animationDuration: 300,
       showUnits: false,
     }),
-    NgChartsModule
+    NgChartsModule,
+    ReactiveFormsModule,
+    PaginatorModule
   ]
 })
 export class AdminModule { }

@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { UserDataService } from 'src/app/services/user-data.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-users',
@@ -6,41 +9,54 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-table.component.scss']
 })
 export class UserTableComponent {
- userData: any = [
-    {
-      userName: 'Akash',
-      email: 'akash@gmail.com',
-      mobile: '8989898989',
-      status: 'Approved',
-      role: 'User'
-    },
-    {
-      userName: 'Mukesh',
-      email: 'Mukesh@gmail.com',
-      mobile: '6585647859',
-      status: 'Approved',
-      role: 'User'
-    },
-    {
-      userName: 'Vikash',
-      email: 'Vikash@gmail.com',
-      mobile: '9874563214',
-      status: 'Approved',
-      role: 'User'
-    },
-    {
-      userName: 'Aman',
-      email: 'Aman@gmail.com',
-      mobile: '6857475869',
-      status: 'Approved',
-      role: 'User'
-    },
-    {
-      userName: 'Meena',
-      email: 'Meena@gmail.com',
-      mobile: '9898653258',
-      status: 'Approved',
-      role: 'User'
+  userData: any = [];
+  totalNumberOfData: number = 0;
+  totalDataInAPage: number = 10;
+  currentPageIndex: number = 0;
+
+  constructor(public router: Router, public userDataService: UserDataService) {
+    this.userData = this.userDataService.userData.slice(0, 10); //Taking initially 10 data
+    this.totalNumberOfData = this.userDataService.userData.length;
+  }
+
+  addUserClicked() {
+    this.router.navigateByUrl('admin/user-form');
+  }
+
+    editUser(editUserEmail: any) {
+      this.router.navigateByUrl(`admin/user-form?userEmail=${editUserEmail}`);
     }
-  ];
+
+  deleteUSer(deleteUserEmail: string) {
+    Swal.fire({
+      title: 'Alert!',
+      text: 'Are you sure you want to delete this user?',
+      icon: 'warning',
+      showDenyButton: true,
+      denyButtonText: 'No',
+      showConfirmButton: true,
+      confirmButtonText: 'Yes'
+    }).then((result: any) => {
+      if (result.isConfirmed) {
+        let newDataSet: any = [];
+
+        this.userDataService.userData.map((userData: any) => {
+          if (userData?.email !== deleteUserEmail) {
+            newDataSet.push(userData);
+          }
+        });
+
+        this.userDataService.userData = newDataSet;
+        this.userData = this.userDataService.userData;
+      }
+    })
+  }
+
+  paginationChange(event: any){
+    this.totalDataInAPage = event?.rows; //rows == total data in a page
+    this.currentPageIndex = event?.page; //page = current page index
+    const previousNumberOfData = event?.first;  //first == previous no. of data 
+    const endValue = event?.first + event?.rows;
+    this.userData = this.userDataService.userData.slice(previousNumberOfData, endValue);    
+  }
 }

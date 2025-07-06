@@ -1,6 +1,6 @@
 <div class="h-100 d-flex">
     <div class="left-side w-17 border-end h-100 d-flex flex-column">
-        <div class="text-center p-3 fs-5 header">
+        <div class="text-center p-3 fw-bold fs-5 header">
             <i class="fa fa-id-card-o" aria-hidden="true"></i> Admin Dashboard UI
         </div>
         <div *ngFor="let menu of menus;" [routerLink]="menu?.link" (click)="menuClicked(menu?.label)" class="menu border px-4 py-3 pointer" [ngClass]="{'selectedMenu': menu?.label == selectedMenu}">

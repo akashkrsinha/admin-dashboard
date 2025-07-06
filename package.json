@@ -24,6 +24,8 @@
     "font-awesome": "^4.7.0",
     "ng-circle-progress": "^1.7.1",
     "ng2-charts": "^4.1.1",
+    "primeicons": "^7.0.0",
+    "primeng": "^16.5.1",
     "rxjs": "~7.8.0",
     "sweetalert2": "^11.21.0",
     "tslib": "^2.3.0",

@@ -27,6 +27,10 @@ html, body{
     width: 83%;
 }
 
+.mt-100{
+    margin-top: 100px;
+}
+
 .tborder{
     border: 2px solid red;;
 }
@@ -50,7 +54,8 @@ table{
 }
 
 thead th{
-    border-bottom: 1px solid grey;
+    background-color: #e2e6ea;
+    border-bottom: 2px solid #ccc;;
 }
 
 td, th{
@@ -65,4 +70,28 @@ th{
 
 tr:nth-child(even){
     background-color: #dddddd;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.color-red{
+    color: red;
+}
+
+.color-green{
+    color: green;
+}
+
+.error-msg{
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
 }
