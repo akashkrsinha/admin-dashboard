@@ -17,11 +17,11 @@ export class DashboardComponent {
       count: 1
     },
     {
-      label: 'Approved Users',
+      label: 'Active Users',
       count: 50
     },
     {
-      label: 'Approval Pending',
+      label: 'Inactive Users',
       count: 4
     },
   ];
