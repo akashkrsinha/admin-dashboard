@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class LayoutComponent {
   selectedMenu: string = 'Dashboard';
+  showMobileMenu: boolean = false;
   menus: any = [
     {
       label: 'Dashboard',
@@ -20,15 +21,22 @@ export class LayoutComponent {
     }
   ];
 
-  constructor(){
-    if(sessionStorage.getItem('selectedMenu')){
+  constructor() {
+    if (sessionStorage.getItem('selectedMenu')) {
       this.selectedMenu = sessionStorage.getItem('selectedMenu')!;
     }
   }
 
-  menuClicked(menu: string) {
+  menuClicked(menu: string, fromMobileMenu: boolean) {
+    if(fromMobileMenu){
+      this.showMobileMenu = false;
+    }
+
     this.selectedMenu = menu;
     sessionStorage.setItem('selectedMenu', this.selectedMenu);
   }
 
+  mobileMenuClicked() {
+    this.showMobileMenu = !this.showMobileMenu;
+  }
 }

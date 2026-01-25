@@ -1,0 +1,17 @@
+@media (max-width: 576px) {
+    :host ::ng-deep .p-paginator {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+
+    :host ::ng-deep .p-paginator-pages {
+        display: none;
+    }
+
+
+    :host ::ng-deep .p-paginator-rpp-options {
+        margin-top: 0.5rem;
+    }
+}
