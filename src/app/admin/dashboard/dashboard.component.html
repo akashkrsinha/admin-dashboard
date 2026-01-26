@@ -22,15 +22,17 @@
 
     <div class="mt-3 mt-lg-5 row">
         <div class="col-12 col-lg-6">
-            <div class="dashboard-card p-2">
+            <div class="dashboard-card p-2 container-height">
                 <canvas baseChart [data]="barChartData" [type]="barChartType" [options]="barChartOptions">
                 </canvas>
             </div>
         </div>
 
-        <div class="col-12 col-lg-6 dashboard-card p-2 mt-3 mt-lg-0 mx-2 mx-lg-0">
-            <canvas baseChart [data]="lineChartData" [type]="lineChartType" [options]="lineChartOptions">
-            </canvas>
+        <div class="col-12 col-lg-6 mt-3 mt-lg-0">
+            <div class="dashboard-card p-2 container-height">
+                <canvas baseChart [data]="lineChartData" [type]="lineChartType" [options]="lineChartOptions">
+                </canvas>
+            </div>
         </div>
     </div>
 

@@ -35,6 +35,7 @@ export class DashboardComponent {
     plugins: {
       legend: { display: false }
     },
+    maintainAspectRatio: false
   };
 
   barChartData: ChartData<'bar'> = {
